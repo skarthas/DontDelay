@@ -8,15 +8,15 @@ import numpy as np
 from datetime import datetime,timedelta
 import os
 
-myapp = Flask(__name__)
+app = Flask(__name__)
 
-myapp.vars={}
+app.vars={}
 
-@myapp.route('/')
+@app.route('/')
 def main():
   return redirect('/index')
 
-@myapp.route('/index',methods=['Get'])
+@app.route('/index',methods=['Get'])
 def indexes():
     
         result = None
@@ -24,7 +24,7 @@ def indexes():
 
         return render_template('index3.html')
   
-@myapp.route('/FindDelay')
+@app.route('/FindDelay')
 def FindDelay():
     flnum = request.args.get('flnum');
     flac = request.args.get('flac');
@@ -33,7 +33,7 @@ def FindDelay():
     
   
 
-@myapp.route('/getMyJson')
+@app.route('/getMyJson')
 def getMyJson():
     dataFrame = pd.read_csv("{{ url_for('static', filename='unique_carrier.csv') }}")
     json = dataFrame.to_json(orient='records', date_format='iso')

@@ -42,4 +42,4 @@ def getMyJson():
 
   
 if __name__ == '__main__':
-  myapp.run(host='159.203.106.125',port=5000,debug=True)
+	app.run(port=33507,debug=True)

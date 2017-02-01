@@ -1,0 +1,153 @@
+<p class="text-center">Don't have a flight yet? Don't even know where to start? Never Fear!!! Don't Delay can help. Check out the airlines below to see which are the best historically. </p>
+
+<body>
+    <script>
+        var delayed = [302411,39166,116255,277767, 134614, 33157, 18656, 14426, 54791, 154370, 213671, 28361, 552362]
+        var ontime = [619015,138441, 162640, 638716, 375159, 61377, 58006, 48854, 78915, 447324, 321629, 39318, 737111]
+        var airlines = ['AA', 'AS', 'B6', 'DL', 'EV', 'F9', 'HA', 'MQ', 'NK', 'OO', 'UA', 'VX', 'WN']
+        var arrData = [[619015, 302411, 909560, 11866, 'AA'],
+ [138441, 39166, 176946, 661, 'AS'],
+ [162640, 116255, 275616, 3279, 'B6'],
+ [638716, 277767, 912759, 3724, 'DL'],
+ [375159, 134614, 496912, 12861, 'EV'],
+ [61377, 33157, 93873, 661, 'F9'],
+ [58006, 18656, 76548, 114, 'HA'],
+ [48854, 14426, 61297, 1983, 'MQ'],
+ [78915, 54791, 131348, 2358, 'NK'],
+ [447324, 154370, 593596, 8098, 'OO'],
+ [321629, 213671, 529609, 5691, 'UA'],
+ [39318, 28361, 67067, 612, 'VX'],
+ [737111, 552362, 1273725, 15748, 'WN']]
+       /* var data = arrData.map(function(d) {
+            return {
+              ontime:    d[0],
+              delayed:   d[1],
+              nocancel:  d[2], 
+              cancelled: d[3],
+              airline:   d[4]
+            };
+        });
+       
+        var width = 700;
+        var height = 700;
+        
+        var widthScale = d3.scale.linear()
+                           .domain([0, 1300000])
+                           .range([0,width])
+        
+        var colorScale = d3.scale.linear()
+                            .domain([0,1300000])
+                            .range(["red","blue"])
+        
+        var axis = d3.svg.axis()
+                    .ticks(5)
+                    .scale(widthScale);
+            
+        var canvas = d3.select("body")
+                        .append("svg")
+                        .attr("width",width)
+                        .attr("height",height)
+                        .append("g")
+                        .attr("transform","translate(20,0)");
+        
+        var bars = canvas.selectAll("rect")
+                    .data(data)
+                    .enter()
+                        .append("rect")
+                        .attr("width",function(d) { return widthScale(d.delayed);  })
+                        .attr("height",20)
+                        .attr("fill",function(d) {return colorScale(d.delayed);})
+                        .attr("y",function(d,i) {return i * 40});
+        
+        canvas.selectAll("text")
+            .data(data)
+            .enter()
+                .append("text")
+                .attr("fill","black")
+                .attr("y", function (d, i) { return i*40-20;})
+                .text(function(d) { return d.airline;})
+
+        
+        
+        canvas.append("g")
+                .attr("transform","translate(0,550)")
+                .call(axis);
+*/
+
+    </script>
+</body>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js"></script>
+        <link id='nvd3style' rel='stylesheet' type='text/css' href='https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css'/>
+
+
+<div id="chart" align="left" style="height: 700px;width: 1000px;"><svg></svg></div>
+<body>
+    <script>
+       var chart = nv.models.multiBarChart().reduceXTicks(false).margin({left: 100});
+        
+chart.yAxis
+    .axisLabel('Flights').axisLabelDistance(40);
+        
+chart.xAxis
+    .axisLabel('Airline');
+        
+d3.select('#chart svg').datum([
+  {
+    key: "Delayed",
+    color: "#0033CC",
+    values:
+    [      
+      { x : "AA", y : 302411},
+      { x : "AS", y : 39166},
+      { x : "B6", y : 116255},
+      { x : "DL", y : 277767},
+      { x : "EV", y : 134614},
+      { x : "F9", y : 33157},
+      { x : "HA", y : 18656},
+      { x : "MQ", y : 14426},
+      { x : "NK", y : 54791},
+      { x : "OO", y : 154370},
+      { x : "UA", y : 213671},
+      { x : "VX", y : 28361},
+      { x : "WN", y : 552362}
+    ]
+  },
+  {
+    key: "On Time",
+    color: "#0099FF",
+    values:
+    [      
+      { x : "AA", y : 619015},
+      { x : "AS", y : 138441 },
+      { x : "B6",   y : 162640},
+      {x:"DL",y:638716},
+      {x:"EV",y:375159},
+      {x:"F9",y:61377},
+      {x:"HA",y:58006},
+      {x:"MQ",y:48854},
+      {x:"NK",y:78915},
+      {x:"OO",y:447324},
+      {x:"UA",y:321629},
+      {x:"VX",y:39318},
+      {x:"WN",y:737111}
+    ]
+  }
+]).transition().duration(500).call(chart);
+          
+</script>
+</body>
+<br>
+<br>
+
+<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~skarthas/88.embed"></iframe>
+<br>
+<br>
+
+<iframe width="1000" height="800" frameborder="0" scrolling="no" src="//plot.ly/~skarthas/84.embed"></iframe>
+
+
+
+
+

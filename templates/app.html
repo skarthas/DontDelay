@@ -1,0 +1,44 @@
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+			$(function() {
+			  $('a#process_input').bind('click', function() {
+				$.getJSON('/FindDelay', {
+				  flnum: $('input[name="flnum"]').val(),
+                  flac: $('input[name="flac"]').val()
+				}, function(data) {
+				  $("#result").text(data.result),
+                  $("#prediction").text(data.prediction)
+                  $("#monthfigure").html('<img src="{{ url_for('static', filename='daymonth.png') }}" align="center" alt="daymonth" width="600" height = "500" margin-bottom="50px">'),
+                  $("#flightpath").html('<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~skarthas/46.embed"></iframe>');
+				});
+				return false;
+			  });
+			});
+		</script>
+
+
+<p class="text-center">Please enter your flight number, date, and airline. If your flight number is not found in the database you must enter your departure time and airports.</p>
+   
+      <form method='post' action="index">
+          <label for="flnum">Flight Number:</label><input type="text" id="txtflnum" name="flnum" value="6"><br><br>
+          <label for="fldate:">Date:</label><input type="text" id="txtfldate" name="fldate" value="01/31/2017"><br><br>
+          <label for="flac">Airline Code:</label><input type="text" id="txtflac" name="flac" value="AA"><br><br>
+          <label for="fldept">Departure Time:</label><input type="text" id="txtfldept" name="fldept" value="17:45"><br><br>
+          <label for="flor">Departure Airport:</label><input type="text" id="txtflor" name="flor" value="JFK"><br><br>
+          <label for="ffdest">Destination Airport:</label><input type="text" id="txtfldest" name="ffdest" value="FLL"><br><br>
+          
+          
+       <a href = '#' id = process_input><button class="btn btn-lg btn-primary btn-block" type="button">Find Delay</button></a>
+          <p id = result>Please Enter your Flight Information</p>
+          <p id = prediction style="font-size:160%">...</p>
+          
+          <img id="monthfigure">
+          
+         <br>
+          <br>
+          
+          <div id = "flightpath"></div>
+
+      
